@@ -125,14 +125,14 @@ st.title("Emotional Impact Questionnaire")
 st.info("Gaslighting Pattern Detected. Please complete this assessment for your research record.")
 
 # Sample snippet
-st.warning("**🔍 Flagged Dialogue:** 'You are imagining things again. I never said that. You always twist my words.'")
+st.warning("**Flagged Dialogue:** 'You are imagining things again. I never said that. You always twist my words.'")
 
 responses = []
 section_scores_dict = {}
 
 # Generate All 50 Questions
 for sec in SECTIONS:
-    st.markdown(f"<h2 class='section-header'>{sec['icon']} {sec['title']}</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h2 class='section-header'>{sec['title']}</h2>", unsafe_allow_html=True)
     
     sec_responses = []
     for i, q in enumerate(sec['questions']):
@@ -161,21 +161,20 @@ if st.button("Submit & Calculate Results", type="primary", use_container_width=T
         total = sum(scores)
         
         # Results Section
-        st.balloons()
         st.header(f"Total Impact Score: {total} / 200")
         
         # Determine Severity Band
         if total <= 50:
-            st.success("🟢 **Low Impact:** Suggests healthy boundaries or very occasional conflict.")
+            st.success("**Low Impact:** Suggests healthy boundaries or very occasional conflict.")
             severity = "Low Impact"
         elif total <= 100:
-            st.warning("🟡 **Moderate Impact:** Indicates a high risk of psychological manipulation.")
+            st.warning("**Moderate Impact:** Indicates a high risk of psychological manipulation.")
             severity = "Moderate Impact"
         elif total <= 150:
-            st.error("🟠 **High Impact:** Significant evidence of gaslighting. Possible Narcissistic Victim Syndrome.")
+            st.error("**High Impact:** Significant evidence of gaslighting. Possible Narcissistic Victim Syndrome.")
             severity = "High Impact"
         else:
-            st.error("🔴 **Severe Impact:** Deep psychological impact. Immediate intervention or therapy strongly recommended.")
+            st.error("**Severe Impact:** Deep psychological impact. Immediate intervention or therapy strongly recommended.")
             severity = "Severe Impact"
 
         # Display Section Breakdown
