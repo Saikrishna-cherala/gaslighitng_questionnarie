@@ -3,7 +3,7 @@ import json
 import datetime
 
 # --- PAGE CONFIG ---
-st.set_page_config(page_title="Gaslighting Impact Assessment", page_icon="🧠", layout="wide")
+st.set_page_config(page_title="Gaslighting Impact Assessment", layout="wide")
 
 # --- ADAPTIVE CUSTOM STYLES ---
 # Using native CSS variables so it looks perfect in BOTH Light and Dark modes
@@ -34,7 +34,6 @@ st.markdown("""
 SECTIONS = [
     {
         "title": "Section 1: Memory & Reality Distortion",
-        "icon": "🧠",
         "questions": [
             "How often do you doubt your own memory of specific events after talking to this person?",
             "Do you feel the need to record conversations or write down details to prove what happened?",
@@ -50,7 +49,6 @@ SECTIONS = [
     },
     {
         "title": "Section 2: Self-Esteem & Decision Making",
-        "icon": "💔",
         "questions": [
             "Do you feel like you were a much more confident person before this relationship?",
             "How often do you feel like you cannot do anything right in their eyes?",
@@ -66,7 +64,6 @@ SECTIONS = [
     },
     {
         "title": "Section 3: Social Isolation & External Validation",
-        "icon": "🌐",
         "questions": [
             "Do you hide details of your relationship from friends or family to avoid their judgment?",
             "Has this person suggested that your friends or family are against you or untrustworthy?",
@@ -82,7 +79,6 @@ SECTIONS = [
     },
     {
         "title": "Section 4: Behavioural Adaptation",
-        "icon": "🛡️",
         "questions": [
             "Do you lie to this person about small things just to avoid a conflict?",
             "How often do you rehearse what you are going to say to them in your head?",
@@ -98,7 +94,6 @@ SECTIONS = [
     },
     {
         "title": "Section 5: The Narcissistic Loop",
-        "icon": "🔄",
         "questions": [
             "Does this person treat you like you are special one moment and worthless the next?",
             "Do they bring up your past mistakes to win current arguments?",
@@ -126,7 +121,7 @@ with st.sidebar:
     st.info("This framework evaluates the emotional impact connected to multimodal gaslighting detection (audio and text analysis).")
 
 # --- MAIN UI ---
-st.title("🛡️ Emotional Impact Questionnaire")
+st.title("Emotional Impact Questionnaire")
 st.info("Gaslighting Pattern Detected. Please complete this assessment for your research record.")
 
 # Sample snippet
@@ -159,7 +154,7 @@ st.divider()
 # --- RESULTS CALCULATION ---
 if st.button("Submit & Calculate Results", type="primary", use_container_width=True):
     if None in responses:
-        st.error("⚠️ Please answer all 50 questions before submitting.")
+        st.error("Please answer all 50 questions before submitting.")
     else:
         # Convert choice strings to integers for the total score
         scores = [int(r.split(" ")[0]) for r in responses]
@@ -184,7 +179,7 @@ if st.button("Submit & Calculate Results", type="primary", use_container_width=T
             severity = "Severe Impact"
 
         # Display Section Breakdown
-        st.subheader("📊 Score Breakdown by Section")
+        st.subheader("Score Breakdown by Section")
         for sec_title, sec_resps in section_scores_dict.items():
             sec_total = sum([int(r.split(" ")[0]) for r in sec_resps])
             st.write(f"**{sec_title}:** {sec_total} / 40")
